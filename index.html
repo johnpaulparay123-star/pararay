@@ -7,15 +7,16 @@
   <title>John Paul Paray | IT Support & Tech Portfolio</title>
 
   <style>
-    /* ================= THEME (Dark Navy & Mint Green - Same as yours) ================= */
+    /* ================= THEME (Charcoal & Amber) ================= */
     :root {
-      --bg: #0b1020;
-      --panel: #121a2d;
-      --panel2: #172239;
-      --text: #edf2ff;
-      --muted: #aab6d1;
-      --accent: #72e0c1;
-      --line: #27334d;
+      --bg: #18181b;         /* Deep Charcoal */
+      --panel: #27272a;      /* Lighter Charcoal */
+      --panel2: #3f3f46;     /* Border/Accent Highlight */
+      --text: #f4f4f5;       /* Off-white */
+      --muted: #a1a1aa;      /* Gray */
+      --accent: #f59e0b;     /* Amber/Gold */
+      --accent-hover: #d97706;
+      --line: #3f3f46;
       --max: 1080px;
     }
 
@@ -24,7 +25,7 @@
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: Inter, Segoe UI, Arial, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65;
     }
 
@@ -37,7 +38,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background-color: rgba(11, 16, 32, 0.92);
+      background-color: rgba(24, 24, 27, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
@@ -102,10 +103,11 @@
     }
     .btn.primary {
       background-color: var(--accent);
-      color: #07131a;
+      color: #18181b;
       border-color: var(--accent);
     }
     .btn.primary:hover {
+      background-color: var(--accent-hover);
       transform: translateY(-2px);
     }
     .btn.secondary {
@@ -119,17 +121,16 @@
 
     /* Profile Photo */
     .profile-photo {
-      background-color: var(--panel2);
-      padding: 15px;
-      border-radius: 50%; /* Circle frame */
-      border: 4px solid var(--accent);
-      box-shadow: 0 0 30px rgba(114, 224, 193, 0.2);
-      max-width: 300px;
+      background-color: var(--panel);
+      padding: 12px;
+      border-radius: 20px; /* Rounded square like yours */
+      border: 2px solid var(--line);
+      max-width: 320px;
       margin: 0 auto;
     }
     .profile-photo img {
-      border-radius: 50%;
-      aspect-ratio: 1/1;
+      border-radius: 12px;
+      aspect-ratio: 4/5;
       object-fit: cover;
     }
 
@@ -163,10 +164,10 @@
     .pillrow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
     .pill {
       background-color: var(--panel2);
-      color: var(--muted);
+      color: var(--text);
       border-radius: 9px;
-      padding: 7px 11px;
-      font-size: 0.9rem;
+      padding: 7px 12px;
+      font-size: 0.85rem;
       border: 1px solid var(--line);
     }
 
@@ -207,17 +208,17 @@
     }
     .cert-actions a.download {
       background-color: var(--accent);
-      color: #07131a;
+      color: #18181b;
       border-color: var(--accent);
     }
     .cert-actions a.download:hover { 
-      opacity: 0.9;
+      background-color: var(--accent-hover);
     }
 
     /* ================= CONTACT & RESUME ================= */
     .resume-band {
       background-color: var(--panel);
-      border: 1px solid var(--accent);
+      border: 1px solid var(--line);
       border-radius: 16px;
       padding: 40px;
       display: flex;
