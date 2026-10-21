@@ -1,273 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Paul Paray - Resume</title>
-    <style>
-        /* CSS Reset & Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="John Paul Paray's IT Student Portfolio - Hardware, Networking, and IT Support." />
+  <title>John Paul Paray | IT Support & Tech Portfolio</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
-            color: #333;
-            line-height: 1.6;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
+  <style>
+    /* ================= THEME (Slate & Teal) ================= */
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-light: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #14b8a6; /* Teal */
+      --accent-hover: #0f766e;
+      --border: #334155;
+      --max-width: 1080px;
+    }
 
-        /* Resume Container */
-        .resume-container {
-            display: flex;
-            width: 100%;
-            max-width: 950px;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-        /* Sidebar (Left Column) */
-        .sidebar {
-            width: 35%;
-            background-color: #1a2a3a;
-            color: #fff;
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
 
-        .profile-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #3498db;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+    /* ================= HEADER ================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-main);
+    }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; gap: 24px; }
+    .navlinks a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .navlinks a:hover { color: var(--accent); }
 
-        .sidebar-section {
-            width: 100%;
-            margin-bottom: 30px;
-        }
+    /* ================= HERO ================= */
+    .hero {
+      padding: 90px 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+    .actions { display: flex; gap: 15px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .btn.primary {
+      background-color: var(--accent);
+      color: #0f172a;
+    }
+    .btn.primary:hover {
+      background-color: var(--accent-hover);
+      color: #fff;
+    }
+    .btn.secondary {
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+    .btn.secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-        .sidebar-section h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #3498db;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-        }
+    /* Profile Photo */
+    .profile-photo {
+      background-color: var(--surface);
+      padding: 15px;
+      border-radius: 50%; /* Circle frame */
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 30px rgba(20, 184, 166, 0.2);
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .profile-photo img {
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
 
-        .contact-info p {
-            font-size: 13px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    /* ================= SECTIONS ================= */
+    section { padding: 70px 0; border-top: 1px solid var(--border); }
+    .section-head { margin-bottom: 40px; }
+    .section-head h2 { font-size: 2rem; }
+    .section-head p { color: var(--text-muted); max-width: 700px; margin-top: 10px; }
 
-        .contact-info svg {
-            width: 16px;
-            height: 16px;
-            fill: #3498db;
-            flex-shrink: 0;
-        }
+    /* ================= CARDS & GRIDS ================= */
+    .about-grid, .skills-grid, .project-grid, .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--accent); }
+    .card p { color: var(--text-muted); }
+    
+    .detail-row { margin-top: 15px; font-size: 0.95rem; }
+    .detail-row strong { color: var(--text-main); display: block; margin-bottom: 4px; }
+    .detail-row span { color: var(--text-muted); display: block; }
 
-        .skills-list, .soft-skills-list {
-            list-style: none;
-        }
+    .pillrow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+    .pill {
+      background-color: var(--surface-light);
+      color: var(--text-main);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
 
-        .skills-list li, .soft-skills-list li {
-            font-size: 13px;
-            margin-bottom: 8px;
-            padding-left: 18px;
-            position: relative;
-        }
+    /* ================= CERTIFICATES ================= */
+    .cert-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .cert-card h3 { font-size: 1.1rem; }
+    .cert-preview {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .cert-preview:hover { transform: scale(1.02); }
+    .cert-actions { display: flex; gap: 10px; margin-top: auto; }
+    .cert-actions a {
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      flex: 1;
+      transition: all 0.2s;
+    }
+    .cert-actions a:hover {
+      background-color: var(--surface-light);
+      color: var(--text-main);
+    }
+    .cert-actions a.download {
+      background-color: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+    .cert-actions a.download:hover { background-color: var(--accent-hover); color: #fff; }
 
-        .skills-list li::before, .soft-skills-list li::before {
-            content: "▸";
-            color: #3498db;
-            position: absolute;
-            left: 0;
-            font-size: 14px;
-        }
+    /* ================= CONTACT & RESUME ================= */
+    .resume-band {
+      background-color: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .resume-band h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .resume-band p { color: var(--text-muted); }
 
-        .education-info h4 {
-            font-size: 14px;
-            margin-bottom: 4px;
-            color: #fff;
-        }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .contact-item {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-item small {
+      display: block;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .contact-item a, .contact-item span { font-size: 1.05rem; font-weight: 500; }
 
-        .education-info p {
-            font-size: 12px;
-            color: #b0bec5;
-            margin-bottom: 10px;
-        }
+    /* ================= FOOTER ================= */
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
 
-        /* Main Content (Right Column) */
-        .main-content {
-            width: 65%;
-            padding: 45px 40px;
-        }
-
-        .header {
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 38px;
-            color: #1a2a3a;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            margin-bottom: 5px;
-        }
-
-        .header h2 {
-            font-size: 18px;
-            color: #3498db;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .section h3 {
-            font-size: 16px;
-            color: #1a2a3a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-        }
-
-        .section p {
-            font-size: 14px;
-            color: #555;
-            text-align: justify;
-        }
-
-        /* Print Styles */
-        @media print {
-            body {
-                background-color: #fff;
-                padding: 0;
-            }
-            .resume-container {
-                box-shadow: none;
-                border-radius: 0;
-                max-width: 100%;
-            }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .resume-container {
-                flex-direction: column;
-            }
-            .sidebar, .main-content {
-                width: 100%;
-            }
-            .header h1 {
-                font-size: 30px;
-            }
-        }
-    </style>
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero .actions { justify-content: center; }
+      .about-grid, .skills-grid, .project-grid, .cert-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .navlinks { display: none; }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="resume-container">
-        
-        <!-- Left Sidebar -->
-        <div class="sidebar">
-            <!-- Replace the src with the actual image path if you have the file locally -->
-            <img src="https://via.placeholder.com/160/1a2a3a/3498db?text=Profile+Photo" alt="John Paul Paray" class="profile-photo">
-            
-            <div class="sidebar-section contact-info">
-                <h3>Contact</h3>
-                <p>
-                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    +63 969 570 1788
-                </p>
-                <p>
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    parayjohnpaul04@gmail.com
-                </p>
-                <p>
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    Purok 7 Salvacion, Alicia, Isabela
-                </p>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Skills</h3>
-                <ul class="skills-list">
-                    <li>Troubleshooting Methodology</li>
-                    <li>Wireless & Mobile Tech</li>
-                    <li>Network Setup & Cabling</li>
-                    <li>Hardware Maintenance</li>
-                    <li>Creativity</li>
-                    <li>Leadership</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Soft Skills</h3>
-                <ul class="soft-skills-list">
-                    <li>Communication</li>
-                    <li>Adaptability</li>
-                    <li>Technical Writing</li>
-                    <li>Collaboration</li>
-                    <li>Critical Thinking</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section education-info">
-                <h3>Education</h3>
-                <h4>NorthEastern College</h4>
-                <p>2026 - Present</p>
-                <p>Bachelor of Science in Information Technology</p>
-            </div>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#home">JOHN PAUL<span>.</span></a>
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#profdev">Certificates</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
         </div>
-
-        <!-- Right Main Content -->
-        <div class="main-content">
-            
-            <div class="header">
-                <h1>John Paul Paray</h1>
-                <h2>IT Support Specialist Aspirant</h2>
-            </div>
-
-            <div class="section">
-                <h3>Profile</h3>
-                <p>
-                    A committed and driven student of Information Technology who is passionate about technology and lifelong learning. Possesses a foundational understanding of computer systems, software, and programming, as well as problem-solving. Capable of working independently or within a team. Willing to learn new skills and obtain real-world experience in a professional setting to showcase abilities and develop talents.
-                </p>
-            </div>
-
-            <div class="section">
-                <h3>Career Objective</h3>
-                <p>
-                    With a strong background in hardware diagnostics and operating system troubleshooting, I am a customer-focused individual seeking a position as an IT Professional Support Specialist. I aim to utilize my communication and problem-solving skills to provide timely and effective technical support.
-                </p>
-            </div>
-
-        </div>
+      </nav>
     </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">IT Support & Hardware Specialist</div>
+        <h1>Hi, I'm<br>John Paul Paray.</h1>
+        <p>A committed and driven Information Technology student passionate about technology and lifelong learning. I possess a foundational understanding of computer systems, software, and programming.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View My Work</a>
+          <a class="btn secondary" href="#resume">Download Resume</a>
+        </div>
+      </div>
+      <div class="profile-photo">
+        <!-- ENSURE HIS PHOTO IS NAMED profile.jpg IN THE FOLDER -->
+        <img src="profile.jpg" alt="John Paul Paray" />
+      </div>
+    </div>
+
+    <!-- ABOUT & CAREER OBJECTIVE -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">About Me</div>
+          <h2>Driven by Technology & Problem Solving</h2>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Career Objective</h3>
+            <p>With a strong background in hardware diagnostics and operating system troubleshooting, I am customer-focused. I'm looking for a job as an IT Professional Support Specialist where I can use my communication and problem-solving skills to provide timely technical support.</p>
+          </article>
+          <article class="card">
+            <h3>My Philosophy</h3>
+            <p>I am capable of working independently or in a team. I am willing to learn new skills and obtain real-world experience in a professional setting. I will give this job my all in order to showcase my abilities and develop my talents.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Education</div>
+          <h2>Academic Background</h2>
+        </div>
+        <article class="card">
+          <div class="detail-row">
+            <strong>NorthEastern College</strong>
+            <span>Bachelor of Science in Information Technology</span>
+            <span style="color: var(--accent); margin-top: 5px;">2026 – Present</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Skills</div>
+          <h2>What I Bring to the Table</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="card">
+            <h3>Hardware & Networking</h3>
+            <div class="pillrow">
+              <span class="pill">Troubleshooting Methodology</span>
+              <span class="pill">Wireless & Mobile Tech</span>
+              <span class="pill">Network Setup & Cabling</span>
+              <span class="pill">Hardware Maintenance</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Professional & Soft Skills</h3>
+            <div class="pillrow">
+              <span class="pill">Communication</span>
+              <span class="pill">Adaptability</span>
+              <span class="pill">Technical Writing</span>
+              <span class="pill">Collaboration</span>
+              <span class="pill">Critical Thinking</span>
+              <span class="pill">Creativity</span>
+              <span class="pill">Leadership</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Selected Work</div>
+          <h2>Projects & Practicums</h2>
+        </div>
+        <div class="project-grid">
+          <article class="card">
+            <h3>Local Area Network Setup</h3>
+            <p>Designed and implemented a small office LAN setup, including cable crimping, router configuration, and network testing for optimal connectivity.</p>
+            <div class="pillrow"><span class="pill">Networking</span><span class="pill">Cabling</span><span class="pill">Router Setup</span></div>
+          </article>
+          <article class="card">
+            <h3>Hardware Diagnostics & Repair</h3>
+            <p>Conducted comprehensive hardware diagnostics on several desktop units, identifying faulty RAM and hard drives, and performing successful OS reinstalls.</p>
+            <div class="pillrow"><span class="pill">Hardware</span><span class="pill">Troubleshooting</span><span class="pill">OS Installation</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFDEV CERTIFICATES -->
+    <section id="profdev">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Professional Development</div>
+          <h2>Certificates</h2>
+          <p>Rename your certificate images to cert1.jpg, cert2.jpg, etc., or update the file names below.</p>
+        </div>
+
+        <div class="cert-grid">
+
+          <!-- CERT 1 -->
+          <article class="cert-card">
+            <h3>Certificate Title 1</h3>
+            <a href="cert1.jpg" target="_blank" rel="noopener">
+              <img class="cert-preview" src="cert1.jpg" alt="Certificate 1" />
+            </a>
+            <div class="cert-actions">
+              <a href="cert1.jpg" target="_blank" rel="noopener">View</a>
+              <a href="cert1.jpg" download="Certificate-1.jpg" class="download">Download</a>
+            </div>
+          </article>
+
+          <!-- CERT 2 -->
+          <article class="cert-card">
+            <h3>Certificate Title 2</h3>
+            <a href="cert2.jpg" target="_blank" rel="noopener">
+              <img class="cert-preview" src="cert2.jpg" alt="Certificate 2" />
+            </a>
+            <div class="cert-actions">
+              <a href="cert2.jpg" target="_blank" rel="noopener">View</a>
+              <a href="cert2.jpg" download="Certificate-2.jpg" class="download">Download</a>
+            </div>
+          </article>
+
+          <!-- CERT 3 -->
+          <article class="cert-card">
+            <h3>Certificate Title 3</h3>
+            <a href="cert3.jpg" target="_blank" rel="noopener">
+              <img class="cert-preview" src="cert3.jpg" alt="Certificate 3" />
+            </a>
+            <div class="cert-actions">
+              <a href="cert3.jpg" target="_blank" rel="noopener">View</a>
+              <a href="cert3.jpg" download="Certificate-3.jpg" class="download">Download</a>
+            </div>
+          </article>
+
+          <!-- CERT 4 -->
+          <article class="cert-card">
+            <h3>Certificate Title 4</h3>
+            <a href="cert4.jpg" target="_blank" rel="noopener">
+              <img class="cert-preview" src="cert4.jpg" alt="Certificate 4" />
+            </a>
+            <div class="cert-actions">
+              <a href="cert4.jpg" target="_blank" rel="noopener">View</a>
+              <a href="cert4.jpg" download="Certificate-4.jpg" class="download">Download</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME DOWNLOAD -->
+    <section id="resume">
+      <div class="wrap">
+        <div class="resume-band">
+          <div>
+            <h2>Download my resume</h2>
+            <p>My resume is available for viewing and download in PDF format.</p>
+            <p style="font-size: 0.85rem; margin-top: 5px; color: var(--accent);">Note: Ensure the file is saved as "resume.pdf" in the folder.</p>
+          </div>
+          <!-- ENSURE FILE IS NAMED resume.pdf -->
+          <a class="btn primary" href="resume.pdf" download="John-Paul-Paray-Resume.pdf">Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Contact</div>
+          <h2>Let's Connect.</h2>
+        </div>
+        <div class="contact-grid">
+          <article class="card">
+            <h3>Contact Information</h3>
+            <div class="contact-item">
+              <small>Email</small>
+              <a href="mailto:parayjohnpaul04@gmail.com">parayjohnpaul04@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <small>Phone</small>
+              <a href="tel:+639695701788">+63 969 570 1788</a>
+            </div>
+            <div class="contact-item">
+              <small>Address</small>
+              <span>Purok 7 Salvacion, Alicia, Isabela</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 John Paul Paray. All rights reserved.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
